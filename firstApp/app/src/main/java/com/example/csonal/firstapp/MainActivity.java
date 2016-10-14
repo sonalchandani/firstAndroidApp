@@ -3,6 +3,7 @@ package com.example.csonal.firstapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final EditText enterPassword = (EditText) findViewById(R.id.text_password);
         final EditText enterEmail = (EditText) findViewById(R.id.text_email);
+
+        DatabaseHandler db = new DatabaseHandler(this);
+
+        Log.d("Insert: ", "Inserting ..");
+        db.addUser(new User(1,"Ravi", "r@df.com","pass"));
+        db.addUser(new User(2,"Srinivas", "s@dsfs.com","pass1"));
+
         Button loginButton = (Button) findViewById(R.id.button_login);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
