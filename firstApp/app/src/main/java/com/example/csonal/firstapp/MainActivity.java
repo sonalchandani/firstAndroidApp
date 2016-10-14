@@ -3,6 +3,7 @@ package com.example.csonal.firstapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText enterPassword = (EditText) findViewById(R.id.text_password);
         final EditText enterEmail = (EditText) findViewById(R.id.text_email);
         Button loginButton = (Button) findViewById(R.id.button_login);
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
               else  if (enterPassword.getText().toString().matches("")) {
                     Toast.makeText(getApplicationContext(),"enter the password",Toast.LENGTH_SHORT).show();
                 }
+                else if(!Patterns.EMAIL_ADDRESS.matcher(enterEmail.getText().toString()).matches()){
+                    Toast.makeText(getApplicationContext(),"enter the email in format x@y.z " ,Toast.LENGTH_SHORT).show();
+                }
                 else {
                     login(v);
                 }
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText_password = (EditText) findViewById(R.id.text_password);
         EditText editText = (EditText) findViewById(R.id.text_email);
         String message = editText.getText().toString();
         intent.putExtra(USERNAME, message);
@@ -56,4 +62,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void register(View view) {
+        Intent intent = new Intent(this, RegisterPage.class);
+        //EditText editText = (EditText) findViewById(R.id.text_email);
+        //String message = editText.getText().toString();
+        //intent.putExtra(USERNAME, message);
+
+        startActivity(intent);
+    }
 }

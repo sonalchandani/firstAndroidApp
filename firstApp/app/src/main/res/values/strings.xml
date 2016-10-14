@@ -3,4 +3,7 @@
     <string name="email_message">Enter your email</string>
     <string name="button_login">Login</string>
     <string name="password_message">Enter your password</string>
+    <string name="register_message">Register here..</string>
+    <string name="sign_up">Sign Up.</string>
+
 </resources>
